@@ -6,14 +6,14 @@ class ListFormatter
 
   attr_reader :to_s
 
-  def initialize(layout='', a=[], title: 'Untitled List', field_marker: '$')
+  def initialize(layout='', a=[], title: 'Untitled List', field_marker: '$', width: 60)
     
-    top = "== #{title} ".ljust(60,'=')
-    bottom = '=' * 60 
+    top = "== #{title} ".ljust(width,'=')
+    bottom = '=' * width
      
     @to_s = top + "\n\n" \
-       + format_rows(a, layout, field_marker).join("\n" + '-'*60 + "\n\n") \
-       + "\n" + bottom
+       + format_rows(a, layout, field_marker).join("\n" + '-' * width \
+       + "\n\n") + "\n" + bottom
 
   end
 
