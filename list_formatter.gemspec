@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'list_formatter'
-  s.version = '0.1.2'
+  s.version = '0.1.3'
   s.summary = 'Formats a list of Hash records, suitable for displaying on the command-line.'
   s.authors = ['James Robertson']
   s.files = Dir['lib/list_formatter.rb']

@@ -13,6 +13,7 @@ class ListFormatter
     s = top + "\n\n" \
        + format_rows(a, layout, field_marker).join("\n" + '-' * width \
        + "\n\n") + "\n" + bottom
+    File.write '/tmp/fun.txt', s
     @to_s = printout(wordwrap(s, width),width)
 
   end
@@ -44,11 +45,13 @@ class ListFormatter
     
   def wordwrap(s, cols=32)
 
-    a = s.split(/ /).inject(['']) do |r,word|
+    a = s.split(/ /)
 
-      word.lines.each do |x|
+    a2 = a.inject(['']) do |r,word|
 
-        if (r[-1] + x).length <= cols then
+      word.lines.each.with_index do |x,i|
+
+        if ((r[-1] + x).length < cols) or x[/[=]/] then
           r[-1] << (r[-1].empty? ? x : ' ' + x)
         else
           r +=  [x]
@@ -59,9 +62,10 @@ class ListFormatter
       r
     end
 
-    a.join("\n")
+    a2.join("\n")
 
   end
+
 
   
 end
